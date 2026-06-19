@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>再访·关注 · 乐鱼体育</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f4f6;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+            line-height: 1.7;
+            color: #2a2f35;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3rem 1.5rem 4rem;
+        }
+
+        .page-wrap {
+            max-width: 760px;
+            width: 100%;
+        }
+
+        /* 卡片通用 */
+        .card {
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e6eaef;
+            padding: 2rem 2rem 2.2rem;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        /* 文章头部 */
+        .article-header {
+            margin-bottom: 1.6rem;
+        }
+
+        .article-title {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1b1f24;
+            margin-bottom: 0.6rem;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            color: #6e7783;
+            border-bottom: 1px solid #eef1f5;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+        }
+
+        .article-meta i {
+            font-style: normal;
+            margin-right: 0.4rem;
+            opacity: 0.7;
+        }
+
+        .lead {
+            font-size: 1.15rem;
+            color: #3b424c;
+            background: #f7f9fc;
+            padding: 1rem 1.4rem;
+            border-radius: 14px;
+            margin: 1.2rem 0 1.8rem;
+            border-left: 4px solid #cbd5e1;
+        }
+
+        /* 正文段落 */
+        .body-text p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .body-text p:last-child {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-link {
+            color: #1e6fa0;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dashed #9bb7d0;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .highlight-link:hover {
+            color: #09476e;
+            border-bottom: 1px solid #1e6fa0;
+        }
+
+        .quote-block {
+            background: #f5f8fc;
+            padding: 1.4rem 1.6rem;
+            border-radius: 18px;
+            margin: 1.8rem 0 1.6rem;
+            border: 1px solid #e0e7ef;
+            font-style: normal;
+            color: #2b3643;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .quote-block .quote-icon {
+            font-size: 1.8rem;
+            line-height: 1;
+            color: #9aaec6;
+            margin-right: 0.6rem;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .quote-block p {
+            margin-bottom: 0.3rem;
+        }
+
+        .quote-block .quote-ref {
+            display: block;
+            margin-top: 0.6rem;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .faq-section {
+            margin-top: 1rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #edf2f7;
+            padding: 1rem 0 0.9rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 550;
+            color: #1f2a3a;
+            margin-bottom: 0.3rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .faq-q::before {
+            content: "Q";
+            display: inline-block;
+            background: #dce5ef;
+            color: #2c3e58;
+            font-size: 0.75rem;
+            font-weight: 600;
+            width: 22px;
+            height: 22px;
+            line-height: 22px;
+            text-align: center;
+            border-radius: 30px;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        .faq-a {
+            color: #3c4758;
+            padding-left: 2.1rem;
+            font-size: 0.95rem;
+        }
+
+        .footnote-note {
+            font-size: 0.9rem;
+            color: #5e6b7c;
+            background: #f0f3f8;
+            padding: 0.9rem 1.2rem;
+            border-radius: 40px;
+            margin-top: 2rem;
+            text-align: center;
+            border: 1px solid #dfe6ef;
+        }
+
+        .footnote-note a {
+            color: #1e6fa0;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #b0c9df;
+        }
+
+        .footnote-note a:hover {
+            border-bottom: 1px solid #1e6fa0;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.8rem 0.8rem 3rem;
+            }
+
+            .card {
+                padding: 1.5rem 1.2rem 1.6rem;
+            }
+
+            .article-title {
+                font-size: 1.6rem;
+            }
+
+            .lead {
+                font-size: 1.05rem;
+                padding: 0.8rem 1rem;
+            }
+
+            .quote-block {
+                padding: 1rem 1.2rem;
+            }
+
+            .article-meta {
+                flex-wrap: wrap;
+                gap: 0.5rem 1.2rem;
+                font-size: 0.8rem;
+            }
+
+            .faq-a {
+                padding-left: 1.8rem;
+            }
+        }
+
+        @media (min-width: 1000px) {
+            .page-wrap {
+                max-width: 800px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrap">
+        <!-- 文章卡片 -->
+        <article class="card">
+            <header class="article-header">
+                <h1 class="article-title">再次停靠，继续同行</h1>
+                <div class="article-meta">
+                    <span><i>📅</i> 2025 · 四月</span>
+                    <span><i>📌</i> 阅读 · 收藏 · 回访</span>
+                    <span><i>✍️</i> 一份安静的备忘</span>
+                </div>
+            </header>
+
+            <div class="lead">
+                有些地方，不需要天天挂在嘴边，却值得放在浏览器的书签栏里。隔一段时间回来看看，发现界面、内容、节奏都还合拍，就像回到一处熟悉的安静角落。
+            </div>
+
+            <div class="body-text">
+                <p>
+                    互联网里让人眼花缭乱的选择层出不穷，但能让人愿意“再次访问”的站点并不多。它未必需要多耀眼，而是恰到好处地提供了你需要的资讯、节奏和氛围。大概半年前，我第一次打开 <a href="https://m-wap-leyu.com.cn" class="highlight-link">乐鱼体育</a>，当时只是被一篇赛事回顾吸引，后来几次浏览，发现这里的更新有自己的步调——不喧哗，但内容扎实。于是，它慢慢变成了我收藏夹里一个安静的锚点。
+                </p>
+
+                <p>
+                    最近整理浏览器书签，很多曾经加星的页面早已停止更新或变得面目全非。而那个链接依旧干净、可用，而且界面比之前更清爽了一点。这种感觉很微妙，像是一本你常翻的杂志，每次翻开都有熟悉的版式和新的选题。持续运营和维护，在如今的网络环境中本身就是一种诚意的体现。
+                </p>
+
+                <p>
+                    我习惯在周末的早晨点开 <a href="https://m-wap-leyu.com.cn" class="highlight-link">乐鱼体育</a>，看几段最新动态，偶尔读读深度分析。不费力，也不需要被推送提醒追着跑。它不会用弹窗催促你“立即查看”，也不会把每个链接都包装成“限时入口”。那种自持和克制，正是我持续关注它的原因。
+                </p>
+
+                <div class="quote-block">
+                    <span class="quote-icon">❝</span>
+                    <p>一个站点最难得的品质，是在你忘记它的时候，它还在那里安静地更新；在你想起它的时候，它依然保持着当初让你欣赏的那种节奏。</p>
+                    <span class="quote-ref">—— 摘自某次浏览后的随笔</span>
+                </div>
+
+                <p>
+                    如果你也在寻找一个可以长期关注、偶尔回来看看的地方，不妨把它放进收藏夹。不需要每天打卡，但当你想要浏览一些有温度、有延续性的内容时，它总在那里。把 <a href="https://m-wap-leyu.com.cn" class="highlight-link">乐鱼体育</a> 加入书签，或许它就是那个让你觉得“幸好存了”的站点之一。
+                </p>
+            </div>
+        </article>
+
+        <!-- FAQ 卡片 (摘要风格) -->
+        <div class="card faq-section">
+            <h2 style="font-size: 1.3rem; font-weight: 500; color: #1f2a3a; margin-bottom: 0.8rem;">几次回访后，常被问到的几点</h2>
+
+            <div class="faq-item">
+                <div class="faq-q">内容更新频率如何？</div>
+                <div class="faq-a">保持稳定的更新节奏，并非日更轰炸，但每周都有值得阅读的新内容，不敷衍不凑数。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">移动端浏览体验流畅吗？</div>
+                <div class="faq-a">适配做得用心，无论手机还是平板，排版干净，加载迅速，没有多余的重定向或遮挡。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">是否需要注册或登录？</div>
+                <div class="faq-a">直接访问即可浏览大部分内容，无需强制注册。收藏后随时打开，零门槛。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">和同类站点相比有什么不同？</div>
+                <div class="faq-a">少一些浮夸的引导，多一些实在的信息呈现。界面安静，内容有延续性，适合长期关注。</div>
+            </div>
+        </div>
+
+        <!-- 温和提示 -->
+        <div class="footnote-note">
+            ⭐ 如果觉得值得长期关注，不妨把 <a href="https://m-wap-leyu.com.cn">乐鱼体育</a> 加入浏览器书签。
+            <span style="display: block; margin-top: 0.3rem; opacity: 0.7;">不必刻意记住，需要时自然想起。</span>
+        </div>
+    </div>
+</body>
+</html>
