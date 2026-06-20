@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝鲸体育 – 运动信息与赛事聚合</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f6f7fa;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            border-bottom: 4px solid #3b82f6;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -40%;
+            left: -10%;
+            width: 120%;
+            height: 140%;
+            background: radial-gradient(circle at 30% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+            position: relative;
+        }
+
+        .hero .sub {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 1.2rem;
+            position: relative;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 0.35rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #93c5fd;
+            margin-top: 0.5rem;
+            position: relative;
+        }
+
+        /* 正文区浅色背景 */
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 2.5rem 1.8rem 4rem;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0 3.5rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.6rem 2rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid rgba(0, 0, 0, 0.02);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .card .icon {
+            font-size: 1.9rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            background: #eff6ff;
+            padding: 0.3rem 0.7rem;
+            border-radius: 40px;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0.5rem 0 0.6rem;
+            color: #111827;
+        }
+
+        .card p {
+            color: #4b5563;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 0.8rem;
+        }
+
+        .card ul li {
+            padding: 0.3rem 0;
+            padding-left: 1.3rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: #374151;
+            border-bottom: 1px dashed #e5e7eb;
+        }
+
+        .card ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .card ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* 内联文本区 – 自然段落 */
+        .intro-text {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2.2rem 2rem;
+            margin: 0 0 2.5rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+            border: 1px solid #eef2f6;
+        }
+
+        .intro-text p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            color: #2d3748;
+        }
+
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-link {
+            color: #2563eb;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1.5px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        .highlight-link:hover {
+            border-bottom-color: #2563eb;
+        }
+
+        /* FAQ 摘要 – 简洁折叠感 */
+        .faq-summary {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2rem 1.5rem;
+            margin-top: 0.5rem;
+            border: 1px solid #eef2f6;
+        }
+
+        .faq-summary h3 {
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-left: 4px solid #3b82f6;
+            padding-left: 0.75rem;
+        }
+
+        .faq-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f1f3f5;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.2rem;
+            font-size: 1rem;
+        }
+
+        .faq-item span {
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+
+        /* 分割线 */
+        .divider {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
+            margin: 1rem 0 2rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            .hero {
+                padding: 3.5rem 1.5rem 3rem;
+            }
+            .container {
+                padding: 1.5rem 1rem 3rem;
+            }
+            .card-grid {
+                gap: 1.5rem;
+            }
+            .intro-text {
+                padding: 1.5rem 1.2rem;
+            }
+            .faq-summary {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero .sub {
+                font-size: 1rem;
+            }
+            .card {
+                padding: 1.4rem 1.2rem;
+            }
+        }
+
+        /* 小提示装饰 */
+        .note {
+            background: #f8fafc;
+            border-left: 4px solid #94a3b8;
+            padding: 1rem 1.4rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: #334155;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        .note strong {
+            color: #1e293b;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem 1.5rem;
+            color: #6b7280;
+            font-size: 0.85rem;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 1.5rem;
+        }
+
+        a {
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1>蓝鲸体育</h1>
+        <div class="sub">赛事资讯 · 运动社区 · 深度数据</div>
+        <div class="tagline">📌 已收藏 · 常回来看看</div>
+    </header>
+
+    <main class="container">
+        <!-- 主视觉与再访问动机 -->
+        <div class="intro-text">
+            <p>如果你曾访问过 <a href="https://main-lanjingsports.com" class="highlight-link">蓝鲸体育</a>，就会明白这里聚合的不仅是比分和赛程，更是一套围绕运动场景的信息流。从职业联赛到业余赛事，从数据看板到社区讨论，页面每一次刷新都能发现新的内容切入角度。很多用户选择将站点加入书签，正是因为它去除了冗余推荐，把选择权交还给真正热爱体育的人。</p>
+            <p>再次打开 <a href="https://main-lanjingsports.com" class="highlight-link">蓝鲸体育</a> 时，首页的信息密度依然克制，但结构已经随赛季节奏悄悄调整——焦点赛事卡片、选手追踪、以及按项目分类的深度专题，都围绕「持续关注」这一行为设计。收藏它不是终点，而是探索的起点。</p>
+        </div>
+
+        <!-- 信息卡片：用途卡片 + 适合人群 -->
+        <div class="card-grid">
+            <div class="card">
+                <div class="icon">📋</div>
+                <h3>赛事仪表盘</h3>
+                <p>实时比分、进度条、历史交锋快速切入。适合赛前分析和赛后复盘，减少跳转步骤。</p>
+                <ul>
+                    <li>多联赛同时跟踪</li>
+                    <li>自定义关注列表</li>
+                    <li>数据更新延迟低于 30s</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="icon">🧑‍🤝‍🧑</div>
+                <h3>适合哪些人</h3>
+                <p>从单项目爱好者到跨领域观察者，都能找到契合的信息密度。</p>
+                <ul>
+                    <li>深度数据控 &amp; 复盘党</li>
+                    <li>运动队/俱乐部信息收集者</li>
+                    <li>想减少信息噪音的普通球迷</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="icon">🔖</div>
+                <h3>为何值得常驻</h3>
+                <p>页面结构随赛季动态微调，而非固定模板。收藏后每次回来都能发现新的筛选维度和内容组织。</p>
+                <ul>
+                    <li>主题卡片随赛程轮换</li>
+                    <li>轻量级个人订阅功能</li>
+                    <li>无浮窗广告，专注内容</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 自然链接段落：持续关注角度 -->
+        <div class="note">
+            <strong>💡 再次访问提示：</strong> 如果你是通过书签或历史记录回来，可以留意首页顶部的「关注项目」快捷入口。很多用户反馈每周至少打开三次 <a href="https://main-lanjingsports.com" class="highlight-link">蓝鲸体育</a>，用来确认赛程变更和追踪特定运动员的近期表现。站点没有强制推送，但关键节点的更新会以轻声明的形式出现在信息流顶部。
+        </div>
+
+        <!-- FAQ 摘要（不是完整FAQ，只是摘要风格） -->
+        <div class="faq-summary">
+            <h3>常见关注点 · 摘要</h3>
+            <div class="faq-item">
+                <strong>页面多久更新一次？</strong>
+                <span>核心赛事数据实时同步，专题卡片和内容板块每 2–4 小时刷新，赛季关键日更新更密集。</span>
+            </div>
+            <div class="faq-item">
+                <strong>可以只关注某一项运动吗？</strong>
+                <span>可以。通过顶部筛选或搜索标签，能快速将信息流收缩到特定项目。该偏好会保留在本地，下次访问依然有效。</span>
+            </div>
+            <div class="faq-item">
+                <strong>相比其他体育站，特点是什么？</strong>
+                <span>更克制的视觉密度、卡片式信息分层、以及围绕「持续关注」做的动态调整。没有自动播放视频和弹窗。</span>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- 一段关于收藏与回访的meta说明 -->
+        <p style="font-size:0.9rem; color:#4b5563; text-align:center; max-width:700px; margin: 1rem auto 0;">
+            将 <a href="https://main-lanjingsports.com" class="highlight-link" style="border-bottom:1px dashed #93c5fd;">蓝鲸体育</a> 加入收藏夹后，建议定期清理浏览器缓存以获取最新样式调整。页面结构遵循渐进增强，所有核心内容在关闭 JavaScript 时仍可阅读。
+        </p>
+    </main>
+
+    <footer>
+        <span>蓝鲸体育 · 持续关注运动信息</span>
+    </footer>
+</body>
+</html>
