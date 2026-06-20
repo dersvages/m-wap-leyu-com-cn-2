@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1xbet 简明指南 · 平台介绍与访问提醒</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f6f7fb;
+            color: #1e1e2a;
+            line-height: 1.6;
+        }
+        .hero {
+            background: linear-gradient(145deg, #0b0d17 0%, #1a1d2e 100%);
+            color: #eaeef5;
+            padding: 4rem 1.5rem 3.2rem;
+            text-align: center;
+            border-bottom: 4px solid #cfa144;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 0.6rem;
+            color: #f5f1e6;
+        }
+        .hero h1 span {
+            color: #cfa144;
+            font-weight: 600;
+        }
+        .hero .subhead {
+            max-width: 680px;
+            margin: 0 auto 1.8rem;
+            font-size: 1.1rem;
+            color: #bfc6db;
+            line-height: 1.7;
+        }
+        .hero .meta {
+            display: inline-block;
+            background: rgba(207, 161, 68, 0.15);
+            padding: 0.45rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #d4b26b;
+            border: 1px solid #cfa14444;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2.5rem 1.8rem 3.5rem;
+        }
+        .intro-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.8rem 2.5rem;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.03), 0 4px 8px rgba(0,0,0,0.02);
+            margin-bottom: 2.8rem;
+            border-left: 5px solid #cfa144;
+        }
+        .intro-card p {
+            font-size: 1.05rem;
+            margin-bottom: 1.2rem;
+        }
+        .intro-card p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.8rem;
+            margin: 2.8rem 0 2.2rem;
+        }
+        .highlight-item {
+            background: white;
+            border-radius: 18px;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.02);
+            border: 1px solid #e9ebf2;
+            transition: all 0.2s ease;
+        }
+        .highlight-item:hover {
+            border-color: #cfa144;
+            box-shadow: 0 12px 28px rgba(207, 161, 68, 0.06);
+        }
+        .highlight-item h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: #12141e;
+        }
+        .highlight-item h3 i {
+            color: #cfa144;
+            margin-right: 0.3rem;
+            font-style: normal;
+        }
+        .highlight-item p {
+            color: #3a3f52;
+            font-size: 0.95rem;
+        }
+        .scenario-note {
+            background: #f0f2f8;
+            border-radius: 20px;
+            padding: 2rem 2.2rem;
+            margin: 2.2rem 0 1.8rem;
+        }
+        .scenario-note h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #141723;
+            margin-bottom: 0.8rem;
+        }
+        .scenario-note h2 small {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #5b6177;
+            margin-left: 0.6rem;
+        }
+        .scenario-note ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1rem;
+        }
+        .scenario-note li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #d5d9e6;
+            display: flex;
+            gap: 0.8rem;
+        }
+        .scenario-note li:last-child {
+            border-bottom: none;
+        }
+        .scenario-note li::before {
+            content: "▹";
+            color: #cfa144;
+            font-weight: bold;
+        }
+        .faq-mini {
+            background: white;
+            border-radius: 24px;
+            padding: 2.2rem 2.4rem;
+            margin: 2.8rem 0 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+        .faq-mini h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #12141e;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e9ebf2;
+            padding-bottom: 0.6rem;
+        }
+        .faq-mini details {
+            margin-bottom: 0.8rem;
+            border-radius: 12px;
+            background: #fafbfd;
+            padding: 0.6rem 1rem;
+            border: 1px solid #eef0f6;
+        }
+        .faq-mini details[open] {
+            background: #f7f8fc;
+        }
+        .faq-mini summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #1e2233;
+            padding: 0.3rem 0;
+            outline: none;
+        }
+        .faq-mini summary:hover {
+            color: #cfa144;
+        }
+        .faq-mini details p {
+            margin-top: 0.5rem;
+            color: #3e445b;
+            font-size: 0.95rem;
+            padding-left: 0.2rem;
+        }
+        .reminder-box {
+            background: #f8f5ed;
+            border-radius: 24px;
+            padding: 1.8rem 2.2rem;
+            margin: 2.5rem 0 1.5rem;
+            border: 1px solid #e6dcc6;
+        }
+        .reminder-box h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #3d3520;
+            margin-bottom: 0.7rem;
+        }
+        .reminder-box p {
+            color: #4c4533;
+            font-size: 0.98rem;
+        }
+        .inline-link {
+            color: #b8862c;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #cfa14466;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .inline-link:hover {
+            color: #9a6f20;
+            border-bottom-color: #9a6f20;
+        }
+        .footer-note {
+            text-align: center;
+            border-top: 1px solid #dfe2ec;
+            padding-top: 2rem;
+            margin-top: 2.5rem;
+            font-size: 0.85rem;
+            color: #6b7188;
+        }
+        .footer-note a {
+            color: #6b7188;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .footer-note a:hover {
+            color: #cfa144;
+        }
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .intro-card {
+                padding: 1.8rem 1.2rem;
+            }
+            .container {
+                padding: 1.8rem 1rem;
+            }
+            .highlight-grid {
+                grid-template-columns: 1fr;
+            }
+            .faq-mini {
+                padding: 1.5rem 1.2rem;
+            }
+            .scenario-note {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1>关于 <span>1xbet</span></h1>
+        <p class="subhead">
+            一份从使用场景与访问习惯出发的简明介绍，不夸大，不渲染，只梳理你或许会关心的轮廓。
+        </p>
+        <div class="meta">指南 · 平台概述 · 访问提醒</div>
+    </header>
+
+    <div class="container">
+        <!-- 摘要 / 引子 -->
+        <div class="intro-card">
+            <p>
+                <strong>1xbet</strong> 是一个面向多元兴趣领域的在线服务平台，其功能覆盖体育赛事信息、娱乐互动及数字内容浏览。 
+                自推出以来，它凭借相对宽泛的覆盖范围和持续更新的板块结构，吸引了一部分习惯线上获取信息的用户。
+            </p>
+            <p>
+                如果你对它感到好奇，或者希望了解其基本面貌，下面的内容整理了几个关键侧面 —— 
+                从结构亮点到日常使用场景，再到一些值得留意的访问细节。我们不替任何人做决定，只提供可供参考的线索。
+            </p>
+        </div>
+
+        <!-- 亮点卡片 -->
+        <div class="highlight-grid">
+            <div class="highlight-item">
+                <h3><i>◈</i> 版块丰富</h3>
+                <p>赛事数据、实时动态、分类资讯……不同模块彼此独立，可根据兴趣选择浏览方向。</p>
+            </div>
+            <div class="highlight-item">
+                <h3><i>◈</i> 界面适应</h3>
+                <p>页面针对不同屏幕尺寸做了基础适配，在手机与桌面端均能保持可读的布局结构。</p>
+            </div>
+            <div class="highlight-item">
+                <h3><i>◈</i> 持续更新</h3>
+                <p>内容按时间线滚动刷新，信息流保持一定新鲜度，便于跟进最新动态。</p>
+            </div>
+            <div class="highlight-item">
+                <h3><i>◈</i> 多语言支持</h3>
+                <p>界面语言可根据偏好切换，降低语言门槛，让信息获取更直接。</p>
+            </div>
+        </div>
+
+        <!-- 场景与使用建议 -->
+        <div class="scenario-note">
+            <h2>使用场景与简单建议 <small>—— 来自日常视角</small></h2>
+            <ul>
+                <li><strong>信息浏览</strong> – 适合在闲暇时快速翻阅赛事摘要、实时比分或热门话题，不必深度参与即可获得概览。</li>
+                <li><strong>自定义关注</strong> – 可标记感兴趣的项目或赛事，系统会按设定推送相关动态，节省筛选时间。</li>
+                <li><strong>多设备切换</strong> – 登录同一账户后，浏览记录和偏好能在手机、平板与电脑间同步，体验相对连续。</li>
+                <li><strong>谨慎参考</strong> – 所有线上信息均需结合个人判断，平台展示内容不代表任何承诺，请保持理性认知。</li>
+            </ul>
+        </div>
+
+        <!-- 访问说明 + 链接 -->
+        <div class="reminder-box">
+            <h3>🧭 访问说明 · 可信但克制</h3>
+            <p>
+                如果你想进一步了解或浏览 <a href="https://group-1xbet.com" class="inline-link">1xbet</a> 的具体内容，
+                建议通过主流搜索引擎确认当前可用的访问路径，并留意网络环境与本地政策是否允许。
+                无论出于信息获取还是其他目的，都请确保你的操作符合所在地的法律与平台规定。
+                我们不鼓励任何形式的违规使用，也无意引导过度依赖线上服务。
+            </p>
+            <p style="margin-top: 0.8rem; font-size: 0.9rem; color: #6b654f;">
+                保持清醒，适度浏览，比任何功能都重要。
+            </p>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <div class="faq-mini">
+            <h2>❓ 常见疑问摘要</h2>
+            <details>
+                <summary>1xbet 适合什么样的用户？</summary>
+                <p>主要面向对体育资讯、实时数据及分类娱乐内容有兴趣的普通网络用户。无论你是轻度浏览者还是深度信息需求者，都可以按自己的节奏使用。</p>
+            </details>
+            <details>
+                <summary>访问是否需要注册或付费？</summary>
+                <p>部分内容可直接浏览，但某些个性化功能或完整数据可能需要注册账户。具体资费政策请以平台页面实际说明为准。</p>
+            </details>
+            <details>
+                <summary>如何确保访问过程更顺畅？</summary>
+                <p>建议使用主流浏览器并保持系统更新。若遇到访问延迟，可检查本地网络或更换访问时段，同时尊重所在地区的网络使用规范。</p>
+            </details>
+            <details>
+                <summary>平台内容是否经过审核？</summary>
+                <p>平台有自身的内容管理机制，但用户仍应对所接触的信息保持独立判断。如发现异常内容，可通过官方反馈渠道进行说明。</p>
+            </details>
+        </div>
+
+        <div class="footer-note">
+            <p>本页面仅作产品说明与信息参考，不构成任何引导或推荐。<br>
+            如需深入了解，可自行查阅相关公开资料。<br>
+            <a href="https://group-1xbet.com" style="color: #b8862c; font-weight: 400;">1xbet</a> · 访问前请确认合规性</p>
+        </div>
+    </div>
+</body>
+</html>
